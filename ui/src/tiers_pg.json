@@ -1,0 +1,15 @@
+{
+  "tiers" : [
+    [ "James Harden" ],
+    [ "Stephen Curry", "Damian Lillard", "Luka Doncic", "Trae Young" ],
+    [ "LeBron James", "Kyrie Irving"],
+    [ "Chris Paul"],
+    [ "Shai Gilgeous-Alexander", "Russell Westbrook", "Kyle Lowry", "Ben Simmons"],
+    [ "D'Angelo Russell", "De'Aaron Fox", "Jamal Murray", "Ja Morant", "Jrue Holiday" ],
+    [ "Dejounte Murray", "Malcolm Brogdon"],
+    [ "Coby White", "Kemba Walker", "Lonzo Ball"],
+    [ "John Wall", "LaMelo Ball"],
+    [ "Markelle Fultz", "Mike Conley", "Ricky Rubio", "Derrick Rose"],
+    [ "Killian Hayes", "Elfrid Payton"]
+  ]
+}
