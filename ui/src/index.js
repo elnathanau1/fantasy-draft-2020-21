@@ -29,20 +29,19 @@ class App extends Component {
         blk : 1.0,
         to : 0.25
       },
-      teams : [ [], [], [], [], [], [], [], [], [], [], [], [] ],
       team_totals : [
-        { name : "S101 S. 6th St Brick", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
-        { name : "Team Au", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
-        { name : "Team Lebran", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
-        { name : "LigMA Ballyers", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
-        { name : "Team JON", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
-        { name : "Team Orr", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
-        { name : "zoom university Big Wong", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
-        { name : "Hoop Squad", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
-        { name : "RIP KOBE MELO = GOAT", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
-        { name : "Team Choi", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
-        { name : "Team Git JLin back", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
-        { name : "Team Wood", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }
+        { team: [], draft_pos: 1, name : "S101 S. 6th St Brick", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
+        { team: [], draft_pos: 2, name : "Team Au", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
+        { team: [], draft_pos: 3, name : "Team Lebran", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
+        { team: [], draft_pos: 4, name : "LigMA Ballyers", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
+        { team: [], draft_pos: 5, name : "Team JON", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
+        { team: [], draft_pos: 6, name : "Team Orr", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
+        { team: [], draft_pos: 7, name : "zoom university Big Wong", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
+        { team: [], draft_pos: 8, name : "Hoop Squad", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
+        { team: [], draft_pos: 9, name : "RIP KOBE MELO = GOAT", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
+        { team: [], draft_pos: 10, name : "Team Choi", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
+        { team: [], draft_pos: 11, name : "Team Git JLin back", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 },
+        { team: [], draft_pos: 12, name : "Team Wood", fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }
       ],
       tiers : {
         pg : [],
@@ -98,10 +97,10 @@ class App extends Component {
   };
 
   isDrafted = name => {
-    for (var i = 0; i < this.state.teams.length; i++) {
-      var team = this.state.teams[i];
+    for (var i = 0; i < this.state.team_totals.length; i++) {
+      var team = this.state.team_totals[i].team;
       for (var j = 0; j < team.length; j++) {
-        if (team[j].name == name) {
+        if (team[j].name.toLowerCase() == name.toLowerCase()) {
           return true;
         }
       }
@@ -142,18 +141,19 @@ class App extends Component {
   }
 
   draftPlayer = player => {
-    var teamIndex = this.state.position - 1;
-    var newTeams = this.state.teams;
-    newTeams[teamIndex].push(player);
+    var team = this.state.team_totals.filter( team => { return team.draft_pos === this.state.position });
+    var newTeamIndex = this.state.team_totals.map( e => e.draft_pos ).indexOf(this.state.position);
+    console.log(newTeamIndex);
+    var newTeams = this.state.team_totals;
+    newTeams[newTeamIndex].team.push(player);
 
     var newTeamTotals = this.state.team_totals;
     for (var i = 0; i < this.stat_fields.length; i++) {
       var field = this.stat_fields[i];
-      newTeamTotals[teamIndex][field] = Math.round((newTeamTotals[teamIndex][field] + player[field]) * 100)/100;
+      newTeamTotals[newTeamIndex][field] = Math.round((newTeamTotals[newTeamIndex][field] + player[field]) * 100)/100;
     }
 
     this.setState({
-      teams : newTeams,
       team_totals : newTeamTotals
     }, () => {
       this.nextDraftPos();
@@ -389,7 +389,18 @@ class App extends Component {
             paging={false}
             searching={false}
             info={false}
-            data={ {columns : modalColumns, rows : this.state.team_totals } }
+            data={ {columns : modalColumns, rows : this.state.team_totals.map( team => ({
+              name : team.name,
+              fg : team.fg,
+              ft : team.ft,
+              three : team.three,
+              pts : team.pts,
+              reb: team.reb,
+              ast : team.ast,
+              stl : team.stl,
+              blk : team.blk,
+              to : team.to
+            }) ) } }
             />
         </MDBModalBody>
         <MDBModalFooter>
