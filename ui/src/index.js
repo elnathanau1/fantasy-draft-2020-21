@@ -52,7 +52,8 @@ class App extends Component {
       },
       overall_position : 0,
       position : 1,
-      direction : "FORWARD"
+      direction : "FORWARD",
+      last_player_drafted : ''
     };
   }
 
@@ -153,12 +154,12 @@ class App extends Component {
     }
 
     this.setState({
-      team_totals : newTeamTotals
+      team_totals : newTeamTotals,
+      last_player_drafted : player.name
     }, () => {
       this.nextDraftPos();
       this.resetRankings();
       this.fillTierList();
-      console.log(this.state);
     })
   }
 
@@ -294,9 +295,10 @@ class App extends Component {
           <MDBBtn onClick={ this.resetRankings }>New Draft</MDBBtn>
         </MDBCol>
         <MDBCol md="3">
-          Current Team: <br /> {this.state.team_totals[this.state.position-1].name} <br />
+          Current Team: <br /> <b>{this.state.team_totals[this.state.position-1].name}</b> <br />
           Overall position: {this.state.overall_position + 1} <br />
           Round: {(Math.floor(this.state.overall_position/12) + 1)}, Pick: {this.state.overall_position % 12 + 1}<br />
+          Last drafted: {this.state.last_player_drafted}<br />
         <MDBBtn color="info" onClick={ this.toggleModal("team_overview") }>Team Overview</MDBBtn>
           <form className="mx-3 grey-text">
             <MDBInput
