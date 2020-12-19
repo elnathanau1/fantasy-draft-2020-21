@@ -141,16 +141,15 @@ class App extends Component {
   }
 
   draftPlayer = player => {
-    var team = this.state.team_totals.filter( team => { return team.draft_pos === this.state.position });
-    var newTeamIndex = this.state.team_totals.map( e => e.draft_pos ).indexOf(this.state.position);
-    console.log(newTeamIndex);
-    var newTeams = this.state.team_totals;
-    newTeams[newTeamIndex].team.push(player);
-
+    var teamIndex = this.state.team_totals.map( e => e.draft_pos ).indexOf(this.state.position);
     var newTeamTotals = this.state.team_totals;
+    newTeamTotals[teamIndex].team.push(player);
+
     for (var i = 0; i < this.stat_fields.length; i++) {
       var field = this.stat_fields[i];
-      newTeamTotals[newTeamIndex][field] = Math.round((newTeamTotals[newTeamIndex][field] + player[field]) * 100)/100;
+      var total = 0;
+      newTeamTotals[teamIndex].team.forEach( player => { total += player[field] });
+      newTeamTotals[teamIndex][field] = Math.round(total / newTeamTotals[teamIndex].team.length * 100)/100;
     }
 
     this.setState({
@@ -159,6 +158,7 @@ class App extends Component {
       this.nextDraftPos();
       this.resetRankings();
       this.fillTierList();
+      console.log(this.state);
     })
   }
 
@@ -271,12 +271,13 @@ class App extends Component {
       <React.Fragment>
       <MDBContainer>
         <MDBRow>
-          {positions.map((item, index) => (
-            <MDBBtn size="sm" color="secondary" onClick={this.toggleModal("tiers_" + item.abbreviation)}>{item.name}</MDBBtn>
-          ))}
-        </MDBRow>
-        <MDBRow>
         <MDBCol md="9">
+          <MDBRow>
+            {positions.map((item, index) => (
+              <MDBBtn size="sm" color="secondary" onClick={this.toggleModal("tiers_" + item.abbreviation)}>{item.name}</MDBBtn>
+            ))}
+            <MDBBtn size="sm" color="dark" onClick={this.nextDraftPos}>Skip</MDBBtn>
+          </MDBRow>
           <MDBDataTable
             autoWidth
             hover
