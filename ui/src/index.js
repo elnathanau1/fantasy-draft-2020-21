@@ -12,6 +12,7 @@ class App extends Component {
 
     this.state = {
       modal_team_overview : false,
+      modal_team_ranks : false,
       modal_tiers_pg : false,
       modal_tiers_sg : false,
       modal_tiers_sf : false,
@@ -30,18 +31,18 @@ class App extends Component {
         to : 0.25
       },
       team_totals : [
-        { team: [], draft_pos: 1, name : "S101 S. 6th St Brick", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 2, name : "Team Au", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 3, name : "Team Lebran", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 4, name : "LigMA Ballyers", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 5, name : "Team JON", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 6, name : "Team Orr", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 7, name : "zoom university Big Wong", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 8, name : "Hoop Squad", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 9, name : "RIP KOBE MELO = GOAT", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 10, name : "Team Choi", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 11, name : "Team Git JLin back", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 12, name : "Team Wood", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }}
+        { team: [], draft_pos: 1, name : "S101 S. 6th St Brick", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+        { team: [], draft_pos: 2, name : "Team Au", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+        { team: [], draft_pos: 3, name : "Team Lebran", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+        { team: [], draft_pos: 4, name : "LigMA Ballyers", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+        { team: [], draft_pos: 5, name : "Team JON", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+        { team: [], draft_pos: 6, name : "Team Orr", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+        { team: [], draft_pos: 7, name : "zoom university Big Wong", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+        { team: [], draft_pos: 8, name : "Hoop Squad", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+        { team: [], draft_pos: 9, name : "RIP KOBE MELO = GOAT", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+        { team: [], draft_pos: 10, name : "Team Choi", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+        { team: [], draft_pos: 11, name : "Team Git JLin back", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+        { team: [], draft_pos: 12, name : "Team Wood", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }}
       ],
       tiers : {
         pg : [],
@@ -151,6 +152,14 @@ class App extends Component {
       var total = 0;
       newTeamTotals[teamIndex].team.forEach( player => { total += player[field] });
       newTeamTotals[teamIndex]['totals'][field] = Math.round(total / newTeamTotals[teamIndex].team.length * 100)/100;
+    }
+
+    for (var i = 0; i < this.stat_fields.length; i++) {
+      var field = this.stat_fields[i];
+      newTeamTotals.sort((a, b) => (a.totals[field] <= b.totals[field]) ? 1 : -1);
+      for (var j = 0; j < newTeamTotals.length; j++) {
+        newTeamTotals[j]['rank'][field] = j+1;
+      }
     }
 
     this.setState({
@@ -296,10 +305,10 @@ class App extends Component {
         </MDBCol>
         <MDBCol md="3">
           Current Team: <br /> <b>{this.state.team_totals[this.state.position-1].name}</b> <br />
-          Overall position: {this.state.overall_position + 1} <br />
-          Round: {(Math.floor(this.state.overall_position/12) + 1)}, Pick: {this.state.overall_position % 12 + 1}<br />
+        Round: {(Math.floor(this.state.overall_position/12) + 1)}, Pick: {this.state.overall_position % 12 + 1} - (#{this.state.overall_position + 1})<br />
           Last drafted: {this.state.last_player_drafted}<br />
-        <MDBBtn color="info" onClick={ this.toggleModal("team_overview") }>Team Overview</MDBBtn>
+        <MDBBtn color="info" size="sm" onClick={ this.toggleModal("team_overview") }>Team Overview</MDBBtn>
+        <MDBBtn color="info" size="sm" onClick={ this.toggleModal("team_ranks") }>Team Ranks</MDBBtn>
           <form className="mx-3 grey-text">
             <MDBInput
               name="FG%"
@@ -408,6 +417,38 @@ class App extends Component {
         </MDBModalBody>
         <MDBModalFooter>
           <MDBBtn color="secondary" onClick={this.toggleModal("team_overview")}>Close</MDBBtn>
+        </MDBModalFooter>
+      </MDBModal>
+
+      <MDBModal isOpen={this.state.modal_team_ranks} toggle={this.toggleModal("team_ranks")} size="lg">
+        <MDBModalHeader toggle={this.toggleModal("team_ranks")}>Team Overview</MDBModalHeader>
+        <MDBModalBody>
+          <MDBDataTable
+            autoWidth
+            hover
+            striped
+            bordered
+            hover
+            small
+            paging={false}
+            searching={false}
+            info={false}
+            data={ {columns : modalColumns, rows : this.state.team_totals.map( team => ({
+              name : team.name,
+              fg : team.rank.fg,
+              ft : team.rank.ft,
+              three : team.rank.three,
+              pts : team.rank.pts,
+              reb: team.rank.reb,
+              ast : team.rank.ast,
+              stl : team.rank.stl,
+              blk : team.rank.blk,
+              to : team.rank.to
+            }) ) } }
+            />
+        </MDBModalBody>
+        <MDBModalFooter>
+          <MDBBtn color="secondary" onClick={this.toggleModal("team_ranks")}>Close</MDBBtn>
         </MDBModalFooter>
       </MDBModal>
 
