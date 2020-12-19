@@ -304,7 +304,7 @@ class App extends Component {
           <MDBBtn onClick={ this.resetRankings }>New Draft</MDBBtn>
         </MDBCol>
         <MDBCol md="3">
-          Current Team: <br /> <b>{this.state.team_totals[this.state.position-1].name}</b> <br />
+          Current Team: <br /> <b>{this.state.team_totals[this.state.team_totals.map( e => e.draft_pos ).indexOf(this.state.position)].name}</b> <br />
         Round: {(Math.floor(this.state.overall_position/12) + 1)}, Pick: {this.state.overall_position % 12 + 1} - (#{this.state.overall_position + 1})<br />
           Last drafted: {this.state.last_player_drafted}<br />
         <MDBBtn color="info" size="sm" onClick={ this.toggleModal("team_overview") }>Team Overview</MDBBtn>
