@@ -7,63 +7,105 @@ import { MDBContainer, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, M
 import "./index.css";
 
 class App extends Component {
+  defaultSettings = {
+    modal_team_overview : false,
+    modal_team_ranks : false,
+    modal_tiers_pg : false,
+    modal_tiers_sg : false,
+    modal_tiers_sf : false,
+    modal_tiers_pf : false,
+    modal_tiers_c : false,
+    rankings : [],
+    multiplier : {
+      fg : 1.0,
+      ft : 1.0,
+      three : 1.0,
+      pts : 1.25,
+      ast : 1.0,
+      reb : 1.0,
+      stl : 1.0,
+      blk : 1.0,
+      to : 0.25
+    },
+    team_totals : [
+      { team: [], draft_pos: 1, name : "Big Wong", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 2, name : "LigMA Ballyers", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 3, name : "Team Git JLin back", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 4, name : "Team Jif", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 5, name : "Flat Earthlings", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 6, name : "RIP KOBE MELO = GOAT", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 7, name : "Hoop Squad", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 8, name : "Team Au", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 9, name : "Team Wood", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 10, name : "Brick", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 11, name : "Team JON", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 12, name : "Team Orr", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }}
+    ],
+    tiers : {
+      pg : [],
+      sg : [],
+      sf : [],
+      pf : [],
+      c : [],
+    },
+    overall_position : 0,
+    position : 1,
+    direction : "FORWARD",
+    last_player_drafted : ''
+  }
+
   constructor(props) {
     super(props);
 
-    this.state = {
-      modal_team_overview : false,
-      modal_team_ranks : false,
-      modal_tiers_pg : false,
-      modal_tiers_sg : false,
-      modal_tiers_sf : false,
-      modal_tiers_pf : false,
-      modal_tiers_c : false,
-      rankings : [],
-      multiplier : {
-        fg : 1.0,
-        ft : 1.0,
-        three : 1.0,
-        pts : 1.0,
-        ast : 1.0,
-        reb : 1.0,
-        stl : 1.0,
-        blk : 1.0,
-        to : 0.25
-      },
-      team_totals : [
-        { team: [], draft_pos: 1, name : "S101 S. 6th St Brick", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 2, name : "Team Au", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 3, name : "Team Lebran", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 4, name : "LigMA Ballyers", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 5, name : "Team JON", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 6, name : "Team Orr", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 7, name : "zoom university Big Wong", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 8, name : "Hoop Squad", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 9, name : "RIP KOBE MELO = GOAT", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 10, name : "Team Choi", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 11, name : "Team Git JLin back", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-        { team: [], draft_pos: 12, name : "Team Wood", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }}
-      ],
-      tiers : {
-        pg : [],
-        sg : [],
-        sf : [],
-        pf : [],
-        c : [],
-      },
-      overall_position : 0,
-      position : 1,
-      direction : "FORWARD",
-      last_player_drafted : ''
-    };
+    if (localStorage.getItem('state') !== null) {
+    console.log(localStorage.getItem('state'));
+      this.state = JSON.parse(localStorage.getItem('state'));
+      console.log(this.state);
+    }
+    else {
+        this.state = this.defaultSettings;
+    }
   }
 
   positions = ['pg', 'sg', 'sf', 'pf', 'c'];
   stat_fields = [ "fg" , "ft", "three", 'pts', 'reb', 'ast', 'stl', 'blk', 'to' ];
 
+  skippedPlayer = {
+    "rank" : 200,
+    "name" : "Skipped",
+    "injury" : '',
+    "position" : '',
+    "espn_adp" : 200,
+    "fg" : -0.3,
+    "ft" : -0.3,
+    "three" : -0.3,
+    "pts" : -0.3,
+    "reb" : -0.3,
+    "ast" : -0.3,
+    "stl" : -0.3,
+    "blk" : -0.3,
+    "to" : -0.3
+  }
+
   componentDidMount() {
     this.fillTierList();
+    this.resetRankings();
   }
+
+  newDraft = () => {
+    this.state = this.defaultSettings;
+    this.fillTierList();
+    this.resetRankings();
+//    localStorage.setItem('state', this.toLocalStorage())
+  }
+
+  toLocalStorage = () =>  {
+    let newState = this.state;
+    newState['rankings'] = [];
+    console.log(newState['overall_position']);
+    return JSON.stringify(newState);
+  }
+
 
   fillTierList = () => {
     let newTiersState = {};
@@ -115,32 +157,40 @@ class App extends Component {
       this.setState({
         overall_position : this.state.overall_position + 1,
         direction : "BACKWARD"
-      })
+      }, this.resetRankings)
     }
     else if (this.state.direction == "BACKWARD" && this.state.position == 1) {
       this.setState({
         overall_position : this.state.overall_position + 1,
         direction : "FORWARD"
-      })
+      }, this.resetRankings)
     }
     else if(this.state.direction == "FORWARD") {
       this.setState({
         overall_position : this.state.overall_position + 1,
         position : this.state.position + 1
-      })
+      }, this.resetRankings)
     }
     else if(this.state.direction == "BACKWARD") {
       this.setState({
         overall_position : this.state.overall_position + 1,
         position : this.state.position - 1
-      })
+      }, this.resetRankings)
     }
 
   }
 
+
   handleClickDraft = player => () => {
     this.draftPlayer(player);
+//    localStorage.setItem('state', this.toLocalStorage());
   }
+
+  skipPlayer = () => {
+    this.draftPlayer(this.skippedPlayer)
+//    localStorage.setItem('state', this.toLocalStorage());
+  }
+
 
   draftPlayer = player => {
     var teamIndex = this.state.team_totals.map( e => e.draft_pos ).indexOf(this.state.position);
@@ -167,7 +217,6 @@ class App extends Component {
       last_player_drafted : player.name
     }, () => {
       this.nextDraftPos();
-      this.resetRankings();
       this.fillTierList();
     })
   }
@@ -211,7 +260,7 @@ class App extends Component {
         blk : rankingsJson[i].blk,
         to : rankingsJson[i].to,
         total : Math.round(total * 100)/100,
-        draft : <MDBTooltip placement="left" component="span" tooltipContent={rankingsJson[i].tip}><MDBBtn size="sm" onClick={this.handleClickDraft(rankingsJson[i])}>Draft</MDBBtn></MDBTooltip>
+        draft : <MDBTooltip placement="left" component="span" tooltipContent={rankingsJson[i].consistency}><MDBBtn size="sm" onClick={this.handleClickDraft(rankingsJson[i])}>Draft</MDBBtn></MDBTooltip>
       });
     }
 
@@ -226,7 +275,8 @@ class App extends Component {
       }
     }
 
-    this.setState( { rankings : removedDrafted } );
+    this.setState( { rankings : removedDrafted } , localStorage.setItem('state', this.toLocalStorage()));
+
   }
 
   toggleModal = name => () => {
@@ -286,7 +336,7 @@ class App extends Component {
             {positions.map((item, index) => (
               <MDBBtn size="sm" color="secondary" onClick={this.toggleModal("tiers_" + item.abbreviation)}>{item.name}</MDBBtn>
             ))}
-            <MDBBtn size="sm" color="dark" onClick={this.nextDraftPos}>Skip</MDBBtn>
+            <MDBBtn size="sm" color="dark" onClick={this.skipPlayer}>Skip</MDBBtn>
           </MDBRow>
           <MDBDataTable
             autoWidth
@@ -301,7 +351,7 @@ class App extends Component {
             data={ {columns : dataColumns, rows : this.state.rankings } }
             refresh={this.state.rankings}
             />
-          <MDBBtn onClick={ this.resetRankings }>New Draft</MDBBtn>
+          <MDBBtn onClick={ this.newDraft }>New Draft</MDBBtn>
         </MDBCol>
         <MDBCol md="3">
           Current Team: <br /> <b>{this.state.team_totals[this.state.team_totals.map( e => e.draft_pos ).indexOf(this.state.position)].name}</b> <br />

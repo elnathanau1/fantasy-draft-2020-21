@@ -1,17 +1,16 @@
 {
   "tiers" : [
-    [ "Karl-Anthony Towns" ],
     [ "Nikola Jokic" ],
+    [ "Karl-Anthony Towns" ],
     [ "Joel Embiid" ],
-    [ "Jusuf Nurkic" ],
-    [ "Andre Drummond" ],
-    [ "Bam Adebayo", "Kristaps Porzingis", "Deandre Ayton" ],
-    [ "Rudy Gobert", "LaMarcus Aldridge", "Nikola Vucevic", "Christian Wood" ],
-    [ "Mitchell Robinson" ],
-    [ "Jonas Valanciunas", "Myles Turner", "Al Horford" ],
-    [ "Brook Lopez", "Thomas Bryant" ],
-    [ "Wendell Carter Jr", "Hassan Whiteside", "Steven Adams", "Clint Capela", "DeMarcus Cousins"],
-    [ "James Wiseman", "Chris Boucher", "Richaun Holmes", "Brandon Clarke", "Daniel Theis" ],
-    [ "DeAndre Jordan", "Nerlens Noel", "Jakob Poeltl", "Ivica Zubac" ]
+    [ "Bam Adebayo", "Nikola Vucevic" ],
+    [ "Rudy Gobert", "Richaun Holmes" ],
+    [ "DeAndre Ayton", "Jaren Jackson Jr", "Jusuf Nurkic" ],
+    [ "Robert Williams", "Myles Turner", "Clint Capela", "Isaiah Stewart", "Jonas Valanciunas" ],
+    [ "Jakob Poeltl"],
+    [ "Jarrett Allen", "Derrick Favors", "Evan Mobley", "Kelly Olynyk", "Daniel Gafford", "Brook Lopez", "Mitchell Robinson", "Mason Plumlee" ],
+    [ "Al Horford", "Wendell Carter Jr", "Nerlens Noel"],
+    [ "Mo Bamba", "Montrezl Harrell"],
+    [ "Ivica Zubac" ]
   ]
 }

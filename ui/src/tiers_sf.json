@@ -1,18 +1,16 @@
 {
   "tiers" : [
-    [ "Kawhi Leonard" ],
-    [ "LeBron James", "Paul George", "Kevin Durant"],
-    [ "Jimmy Butler" ],
-    [ "Khris Middleton" ],
+    [ "Kevin Durant" ],
+    [ "Jayson Tatum" ],
+    [ "Paul George", "Jimmy Butler" ],
+    [ "LeBron James", "Michael Porter Jr"],
+    [ "Khris Middleton", "OG Anunoby", "Brandon Ingram" ],
     [ "Gordon Hayward" ],
-    [ "Brandon Ingram", "DeMar DeRozan", "Michael Porter Jr" ],
+    [ "Mikal Bridges" ],
     [ "TJ Warren" ],
-    [ "Jaylen Brown", "Tobias Harris" ],
-    [ "Kelly Oubre Jr", "OG Anunoby", "Mikal Bridges" ],
-    [ "Otto Porter Jr" ],
-    [ "Andrew Wiggins" ],
-    [ "Will Barton" ],
-    [ "Duncan Robinson", "Joe Harris", "Danny Green", "Josh Richardson" ]
-
+    [ "Robert Covington", "Kyle Anderson" ],
+    [ "Andrew Wiggins", "Miles Bridges"],
+    [ "De'Andre Hunter", "Joe Ingles" ],
+    [ "Keldon Johnson", "Otto Porter Jr", "Royce O'Neale", "Danilo Gallinari"]
   ]
 }

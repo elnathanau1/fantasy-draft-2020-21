@@ -1,15 +1,18 @@
 {
   "tiers" : [
-    [ "James Harden" ],
-    [ "Stephen Curry", "Damian Lillard", "Luka Doncic", "Trae Young" ],
-    [ "LeBron James", "Kyrie Irving"],
-    [ "Chris Paul"],
-    [ "Shai Gilgeous-Alexander", "Russell Westbrook", "Kyle Lowry", "Ben Simmons"],
-    [ "D'Angelo Russell", "De'Aaron Fox", "Jamal Murray", "Ja Morant", "Jrue Holiday" ],
-    [ "Dejounte Murray", "Malcolm Brogdon"],
-    [ "Coby White", "Kemba Walker", "Lonzo Ball"],
-    [ "John Wall", "LaMelo Ball"],
-    [ "Markelle Fultz", "Mike Conley", "Ricky Rubio", "Derrick Rose"],
-    [ "Killian Hayes", "Elfrid Payton"]
+    [ "Stephen Curry" ],
+    [ "Damian Lillard"],
+    [ "Luka Doncic", "Kyrie Irving"],
+    [ "Trae Young", "Fred VanVleet", "Chris Paul"],
+    [ "LaMelo Ball"],
+    [ "Jrue Holiday", "Lonzo Ball", "De'Aaron Fox"],
+    [ "Russell Westbrook", "Tyrese Haliburton", "D'Angelo Russell"],
+    [ "Kemba Walker", "Dejounte Murray", "Darius Garland", "Cade Cunningham"],
+    [ "Kyle Lowry"],
+    [ "Ben Simmons", "Terry Rozier", "Ja Morant"],
+    [ "Marcus Smart", "Malcolm Brogdon", "Mike Conley"],
+    [ "John Wall" ],
+    [ "Devonte' Graham"],
+    [ "Spencer Dinwiddie"]
   ]
 }

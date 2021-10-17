@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "mdb-react-ui-kit": "^1.4.0",
     "mdbreact": "4.9.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "store": "^2.0.12"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,14 +1,16 @@
 {
   "tiers" : [
+    [ "Giannis Antetokounmpo" ],
     [ "Anthony Davis" ],
-    [ "Kawhi Leonard", "Giannis Antetokounmpo" ],
-    [ "Jayson Tatum", "Kevin Durant" ],
-    [ "Christian Wood", "Kristaps Porzingis" ],
-    [ "John Collins", "Pascal Siakam", "Jaren Jackson Jr", "Domantas Sabonis" ],
-    [ "Michael Porter Jr", "Draymond Green" ],
-    [ "TJ Warren", "Robert Covington" ],
-    [ "Tobias Harris", "Kevin Love", "Julius Randle", "Zion Williamson" ],
-    [ "Jerami Grant", "Lauri Markkanen", "Richaun Holmes", "Bojan Bogdanovic", "Danilo Gallinari" ],
-    [ "Davis Bertans", "Darius Bazley", "Aaron Gordon", "Paul Millsap", "Marvin Bagley III", "Montrezl Harrell", "Blake Griffin", "Serge Ibaka", "PJ Washington"]
+    [ "Julius Randle", "Domantas Sabonis" ],
+    [ "Zion Williamson", "Draymond Green", "Pascal Siakam", "Kristaps Porzingis" ],
+    [ "Tobias Harris" ],
+    [ "Jonathan Isaac", "John Collins", "Christian Wood" ],
+    [ "PJ Washington", "Thaddeus Young", "Chris Boucher", "Jerami Grant" ],
+    [ "Jaden McDaniels" ],
+    [ "Larry Nance Jr", "Chuma Okeke" ],
+    [ "Dorian Finley-Smith", "Patrick Williams" ],
+    [ "Bobby Portis", "Isaiah Roby", "Marcus Morris Sr", "Rui Hachimura"],
+    [ "Aaron Gordon", "Cam Johnson" ]
   ]
 }
