@@ -1,10 +1,13 @@
+import re
+
 from bs4 import BeautifulSoup
 import requests
 import json
 import csv
 
-ESPN_API_URL = "https://fantasy.espn.com/apis/v3/games/fba/seasons/2022/segments/0/leaguedefaults/1?view=kona_player_info"
+ESPN_API_URL = "https://fantasy.espn.com/apis/v3/games/fba/seasons/2023/segments/0/leaguedefaults/1?view=kona_player_info"
 HASHTAG_RANKINGS_URL = "https://hashtagbasketball.com/fantasy-basketball-projections"
+HASHTAG_DYNASTY_URL = "https://hashtagbasketball.com/fantasy-basketball-dynasty-rankings"
 CNN_INJURIES_URL = "https://www.cbssports.com/nba/injuries/"
 
 
@@ -48,10 +51,19 @@ def pull_data_hashtag_zscores():
     page = requests.get(HASHTAG_RANKINGS_URL)
 
     soup = BeautifulSoup(page.content, 'html.parser')
-    players_div = soup.findAll("div", {"class": "table-responsive"})[2]
+    # print(soup.prettify())
+    players_div = soup.findAll("div", {"class": "table-responsive"})[1]
     rankings_table = players_div.findAll("tr")
 
+    dynasty_page = requests.get(HASHTAG_DYNASTY_URL)
+    dynasty_soup = BeautifulSoup(dynasty_page.content, 'html.parser')
+    dynasty_table = dynasty_soup.find("table", {"class": "table--statistics"})
+    dynasty_rows = dynasty_table.findAll("tr")
+    tooltip_map = map(lambda tr: (tr.contents[3].text.strip(), tr.findAll('td')[-1].contents[-1].strip()), dynasty_rows[1:])
+    tooltip_dict = dict((x, y) for x, y in tooltip_map)
+
     player_list = []
+    player_names = []
     for i in range(0, len(rankings_table)):
         row = rankings_table[i]
         td = row.findAll("td")
@@ -62,23 +74,25 @@ def pull_data_hashtag_zscores():
             if rank != "R#":
                 # unspan the tags that have it (not all of them do)
                 formatted_data = [""] * 14
-                formatted_data[0] = rank
+                formatted_data[0] = re.search('[0-9]+', rank).group()
                 k = 1
-                for j in range(0, len(td)):
-                    if td[j].find("span") is not None and td[j].find("input") is None:
+                for j in range(1, len(td)):
+                    if td[j].find("a") is not None:
+                        formatted_data[k] = td[j].text.strip()
+                        k += 1
+                    elif td[j].find("span") is not None and td[j].find("input") is None:
                         if k < len(formatted_data) - 1:  # so that we don't pull total, we'll calculate that ourselves
-                            formatted_data[k] = td[j].find("span").text.strip()
+                            formatted_data[k] = td[j].text.strip()
                             k += 1
-
                     elif len(td[j].findAll("input")) == 2:
                         if k < len(formatted_data) - 1:
                             formatted_data[k] = td[j].findAll("input")[1]['value'].strip()
                             k += 1
-                tip = row.find("span", {"class": "tip-content"})
-                if tip is not None:
-                    formatted_data[12] = tip.text.strip()
-                else:
-                    formatted_data[12] = ''
+
+                player_name = formatted_data[1]
+                player_names.append(player_name)
+                if player_name in tooltip_dict.keys():
+                    formatted_data[12] = tooltip_dict[player_name]
 
                 player_page_url = 'https://hashtagbasketball.com' + row.find('a')['href']
                 player_page = requests.get(player_page_url)
@@ -86,12 +100,43 @@ def pull_data_hashtag_zscores():
                 progress_bar = player_page_soup.find('div', {'class': 'progress-bar'})
                 if progress_bar is not None:
                     formatted_data[13] = progress_bar.text.strip()
-                else:
-                    formatted_data[13] = ''
 
                 player_list.append(tuple(formatted_data))
-                print(formatted_data[2])
 
+    rank = 201
+    for i in range(1, len(dynasty_rows)):
+        tr = dynasty_rows[i]
+        player_name = tr.contents[3].text.strip()
+        if player_name not in player_names:
+            formatted_data = [""] * 14
+            formatted_data[0] = rank
+            rank += 1
+            formatted_data[1] = player_name
+            i = 2
+            stat_tags = tr.findAll('td')[-1].findAll('kbd')
+            for tag in stat_tags[1:]:
+                zscore_type = tag['class'][0]
+                if zscore_type == 'elite':
+                    formatted_data[i] = '2.51'
+                elif zscore_type == 'vgood':
+                    formatted_data[i] = '1.51'
+                elif zscore_type == 'good':
+                    formatted_data[i] = '0.45'
+                elif zscore_type == 'avg':
+                    formatted_data[i] = '-0.25'
+                elif zscore_type == 'bavg':
+                    formatted_data[i] = '-1.00'
+                elif zscore_type == 'ngood':
+                    formatted_data[i] = '-1.50'
+                i += 1
+
+            if player_name in tooltip_dict.keys():
+                formatted_data[12] = tooltip_dict[player_name]
+
+            player_list.append(tuple(formatted_data))
+            # print(formatted_data)
+
+    # print(player_list)
     return player_list
 
 
@@ -116,16 +161,16 @@ def combined_rankings(espn_rankings, hashtag_rankings_zscore, cnn_injuries):
     player_list = []
     for player in hashtag_rankings_zscore:
         rank = player[0]
-        player_name = player[2].replace(".", "")
-        fg = round(float(player[3]), 2)
-        ft = round(float(player[4]), 2)
-        three = round(float(player[5]), 2)
-        pts = round(float(player[6]), 2)
-        reb = round(float(player[7]), 2)
-        ast = round(float(player[8]), 2)
-        stl = round(float(player[9]), 2)
-        blk = round(float(player[10]), 2)
-        to = round(float(player[11]), 2) * -1.0
+        player_name = player[1].replace(".", "")
+        fg = round(float(player[2]), 2)
+        ft = round(float(player[3]), 2)
+        three = round(float(player[4]), 2)
+        pts = round(float(player[5]), 2)
+        reb = round(float(player[6]), 2)
+        ast = round(float(player[7]), 2)
+        stl = round(float(player[8]), 2)
+        blk = round(float(player[9]), 2)
+        to = round(float(player[10]), 2) * -1.0
         tip = player[12]
         consistency = player[13]
 

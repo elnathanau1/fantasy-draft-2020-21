@@ -247,7 +247,7 @@ class App extends Component {
         punt_rank : 0,
         rank : parseInt(rankingsJson[i].rank),
         name : rankingsJson[i].name,
-        injury : this.displayInjury(rankingsJson[i].injury),
+        injury : this.displayInjury(rankingsJson[i].tip),
         position : rankingsJson[i].positions.toString(),
         espn_adp : rankingsJson[i].espn_adp,
         fg : rankingsJson[i].fg,
@@ -282,7 +282,7 @@ class App extends Component {
   toggleModal = name => () => {
     var field = "modal_" + name;
     this.setState({
-      [field] : !this.state.[field]
+      [field] : !this.state[field]
     });
   };
 
