@@ -1,0 +1,18 @@
+{
+  "targets" : [
+    "PTS, AST, FT%, ",
+    "PTS, AST, REB, FT%",
+    "PTS, AST, REB, FG%",
+    "PTS, REB, AST, FG%",
+    "PTS, AST, REB, FG%",
+    "PTS, AST, REB",
+    "PTS, AST, REB",
+    "PTS, AST, REB",
+    "PTS, AST, REB",
+    "PTS, AST, REB",
+    "PTS, AST, REB, FG%",
+    "PTS, AST, REB, FG%",
+    "PTS, AST, REB, FG%",
+    "PTS, AST, REB, FG%"
+  ]
+}

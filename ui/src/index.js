@@ -73,6 +73,7 @@ class App extends Component {
   skippedPlayer = {
     "rank" : 200,
     "name" : "Skipped",
+    "tip" : '',
     "injury" : '',
     "position" : '',
     "espn_adp" : 200,
@@ -84,7 +85,8 @@ class App extends Component {
     "ast" : -0.3,
     "stl" : -0.3,
     "blk" : -0.3,
-    "to" : -0.3
+    "to" : -0.3,
+    "gp" : 0
   }
 
   componentDidMount() {
@@ -221,10 +223,10 @@ class App extends Component {
     })
   }
 
-  displayInjury = injury => {
-    if (injury != "") {
+  displayTip = tip => {
+    if (tip != "" && tip != "Game Time Decision") {
       return (
-        <MDBTooltip placement="left" component="span" tooltipContent={injury}>
+        <MDBTooltip placement="left" component="span" tooltipContent={tip}>
           <MDBIcon far icon="plus-square" />
         </MDBTooltip>
       );
@@ -247,9 +249,10 @@ class App extends Component {
         punt_rank : 0,
         rank : parseInt(rankingsJson[i].rank),
         name : rankingsJson[i].name,
-        injury : this.displayInjury(rankingsJson[i].tip),
+        injury : this.displayTip(rankingsJson[i].injury),
         position : rankingsJson[i].positions.toString(),
         espn_adp : rankingsJson[i].espn_adp,
+        gp: rankingsJson[i].gp,
         fg : rankingsJson[i].fg,
         ft : rankingsJson[i].ft,
         three : rankingsJson[i].three,
@@ -260,7 +263,8 @@ class App extends Component {
         blk : rankingsJson[i].blk,
         to : rankingsJson[i].to,
         total : Math.round(total * 100)/100,
-        draft : <MDBTooltip placement="left" component="span" tooltipContent={rankingsJson[i].consistency}><MDBBtn size="sm" onClick={this.handleClickDraft(rankingsJson[i])}>Draft</MDBBtn></MDBTooltip>
+        consistency: rankingsJson[i].consistency,
+        draft : <MDBTooltip placement="left" component="span" tooltipContent={rankingsJson[i].tip}><MDBBtn size="sm" onClick={this.handleClickDraft(rankingsJson[i])}>Draft</MDBBtn></MDBTooltip>
       });
     }
 
@@ -294,6 +298,7 @@ class App extends Component {
       { label: '', field: 'injury' },
       { label: '', field: 'position'},
       { label: 'ADP', field: 'espn_adp' },
+      { label: 'GP' , field: 'gp'},
       { label: 'FG%' , field: 'fg'},
       { label: 'FT%' , field: 'ft'},
       { label: '3PM' , field: 'three'},
@@ -329,9 +334,9 @@ class App extends Component {
 
   return (
       <React.Fragment>
-      <MDBContainer>
+      <MDBContainer className="overall-container">
         <MDBRow>
-        <MDBCol md="9">
+        <MDBCol className="padded-right" xs>
           <MDBRow>
             {positions.map((item, index) => (
               <MDBBtn size="sm" color="secondary" onClick={this.toggleModal("tiers_" + item.abbreviation)}>{item.name}</MDBBtn>
@@ -353,7 +358,7 @@ class App extends Component {
             />
           <MDBBtn onClick={ this.newDraft }>New Draft</MDBBtn>
         </MDBCol>
-        <MDBCol md="3">
+        <MDBCol xs>
           Current Team: <br /> <b>{this.state.team_totals[this.state.team_totals.map( e => e.draft_pos ).indexOf(this.state.position)].name}</b> <br />
         Round: {(Math.floor(this.state.overall_position/12) + 1)}, Pick: {this.state.overall_position % 12 + 1} - (#{this.state.overall_position + 1})<br />
           Last drafted: {this.state.last_player_drafted}<br />
