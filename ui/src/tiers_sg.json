@@ -1,16 +1,14 @@
 {
   "tiers" : [
-    [ "James Harden" ],
-    [ "Bradley Beal" ],
-    [ "Shai Gilgeous-Alexander", "Zach Lavine", "Donovan Mitchell", "Jaylen Brown"],
-    [ "Devin Booker", "Anthony Edwards" ],
-    [ "Derrick White" ],
-    [ "CJ McCollum" ],
-    [ "Demar DeRozan" ],
-    [ "Caris LeVert", "Norman Powell", "Buddy Hield", "Collin Sexton", "Bogdan Bogdanovic"],
-    [ "Evan Fournier", "Kevin Porter Jr", "Jalen Suggs", "Nickeil Alexander-Walker"],
-    [ "Klay Thompson", "Jalen Green"],
-    [ "Danny Green", "RJ Barret", "Will Barton", "Josh Giddey", "Donte DiVincenzo"],
-    [ "Malik Beasley", "Dillon Brooks", "Jordan Clarkson"]
+    [ "Devin Booker" ],
+    [ "Dejounte Murray", "Anthony Edwards", "Shai Gilgeous-Alexander" ],
+    [ "Bradley Beal", "Donovan Mitchell" ],
+    [ "Zach Lavine",  "Terry Rozier"],
+    [ "Jaylen Brown", "Jalen Green", "Devin Vassell" ],
+    [ "Klay Thompson" ],
+    [ "Jordan Poole", "Tyrese Maxey", "Tyler Herro", "Collin Sexton" ],
+    [ "Anfernee Simons", "Jalen Suggs" ],
+    [ "Bones Hyland", "Chris Duarte", "Norman Powell", "Gary Trent Jr", "De'Anthony Melton"],
+    [ "Kevin Huerter", "Kentavious Caldwell-Pope", "Seth Curry" ]
   ]
 }

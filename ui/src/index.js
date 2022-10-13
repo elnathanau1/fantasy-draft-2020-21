@@ -28,18 +28,18 @@ class App extends Component {
       to : 0.25
     },
     team_totals : [
-      { team: [], draft_pos: 1, name : "Big Wong", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-      { team: [], draft_pos: 2, name : "LigMA Ballyers", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-      { team: [], draft_pos: 3, name : "Team Git JLin back", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-      { team: [], draft_pos: 4, name : "Team Jif", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-      { team: [], draft_pos: 5, name : "Flat Earthlings", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-      { team: [], draft_pos: 6, name : "RIP KOBE MELO = GOAT", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-      { team: [], draft_pos: 7, name : "Hoop Squad", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-      { team: [], draft_pos: 8, name : "Team Au", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 1, name : "RIP KOBE MELO = GOAT", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 2, name : "Team Au", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 3, name : "Hoop Squad", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 4, name : "Team JON", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 5, name : "Big Wong", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 6, name : "Team Bradley", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 7, name : "Brick", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 8, name : "Team Orr", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
       { team: [], draft_pos: 9, name : "Team Wood", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-      { team: [], draft_pos: 10, name : "Brick", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-      { team: [], draft_pos: 11, name : "Team JON", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
-      { team: [], draft_pos: 12, name : "Team Orr", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }}
+      { team: [], draft_pos: 10, name : "Team Git JLin back", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 11, name : "LigMA Ballyers", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }},
+      { team: [], draft_pos: 12, name : "Flat Earthlings", totals : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }, rank : { fg : 0, ft : 0, three : 0, pts : 0, reb : 0, ast : 0, stl : 0, blk : 0, to : 0 }}
     ],
     tiers : {
       pg : [],
@@ -77,6 +77,7 @@ class App extends Component {
     "injury" : '',
     "position" : '',
     "espn_adp" : 200,
+    "draft_range" : '',
     "fg" : -0.3,
     "ft" : -0.3,
     "three" : -0.3,
@@ -86,7 +87,8 @@ class App extends Component {
     "stl" : -0.3,
     "blk" : -0.3,
     "to" : -0.3,
-    "gp" : 0
+    "gp" : 0,
+    "range": ''
   }
 
   componentDidMount() {
@@ -236,6 +238,31 @@ class App extends Component {
     }
   }
 
+  applyColorIndividualZscore = zscore => {
+    if (zscore >= 2.50) {
+      return <td data-sort={zscore} bgcolor="#079b00">{zscore}</td>
+    }
+    else if (zscore >= 1.50) {
+      return <td data-sort={zscore} bgcolor="#5cd856">{zscore}</td>
+    }
+    else if (zscore >= 0.45) {
+      return <td data-sort={zscore} bgcolor="#abe5a8">{zscore}</td>
+    }
+    else if (zscore >= -0.25) {
+      return <td data-sort={zscore} bgcolor="#ffffff">{zscore}</td>
+    }
+    else if (zscore >= -1.1) {
+      return <td data-sort={zscore} bgcolor="#db9d9d">{zscore}</td>
+    }
+    else {
+      return <td data-sort={zscore} bgcolor="#e70b0b">{zscore}</td>
+    }
+  }
+
+  formatPlayoffs = (games, qualityGames) => {
+    return `G:${games[22]}-${games[23]}-${games[24]}\nQ:${qualityGames[22]}-${qualityGames[23]}-${qualityGames[24]}`
+  }
+
   resetRankings = () => {
     let rankingsJson = require('./rankings.json');
     var newRankings = [];
@@ -252,18 +279,20 @@ class App extends Component {
         injury : this.displayTip(rankingsJson[i].injury),
         position : rankingsJson[i].positions.toString(),
         espn_adp : rankingsJson[i].espn_adp,
+        range: rankingsJson[i].draft_range,
+        playoffs: this.formatPlayoffs(rankingsJson[i].games, rankingsJson[i].quality_games),
         gp: rankingsJson[i].gp,
-        fg : rankingsJson[i].fg,
-        ft : rankingsJson[i].ft,
-        three : rankingsJson[i].three,
-        pts : rankingsJson[i].pts,
-        reb : rankingsJson[i].reb,
-        ast : rankingsJson[i].ast,
-        stl : rankingsJson[i].stl,
-        blk : rankingsJson[i].blk,
-        to : rankingsJson[i].to,
+        fg : this.applyColorIndividualZscore(rankingsJson[i].fg),
+//        fg : rankingsJson[i].fg,
+        ft : this.applyColorIndividualZscore(rankingsJson[i].ft),
+        three : this.applyColorIndividualZscore(rankingsJson[i].three),
+        pts : this.applyColorIndividualZscore(rankingsJson[i].pts),
+        reb : this.applyColorIndividualZscore(rankingsJson[i].reb),
+        ast : this.applyColorIndividualZscore(rankingsJson[i].ast),
+        stl : this.applyColorIndividualZscore(rankingsJson[i].stl),
+        blk : this.applyColorIndividualZscore(rankingsJson[i].blk),
+        to : this.applyColorIndividualZscore(rankingsJson[i].to),
         total : Math.round(total * 100)/100,
-        consistency: rankingsJson[i].consistency,
         draft : <MDBTooltip placement="left" component="span" tooltipContent={rankingsJson[i].tip}><MDBBtn size="sm" onClick={this.handleClickDraft(rankingsJson[i])}>Draft</MDBBtn></MDBTooltip>
       });
     }
@@ -292,23 +321,25 @@ class App extends Component {
 
   render() {
     const dataColumns = [
-      { label: 'PR' , field: 'punt_rank'},
-      { label: 'R' , field: 'rank'},
-      { label: 'Name' , field: 'name'},
-      { label: '', field: 'injury' },
-      { label: '', field: 'position'},
-      { label: 'ADP', field: 'espn_adp' },
-      { label: 'GP' , field: 'gp'},
-      { label: 'FG%' , field: 'fg'},
-      { label: 'FT%' , field: 'ft'},
-      { label: '3PM' , field: 'three'},
-      { label: 'PTS' , field: 'pts'},
-      { label: 'REB' , field: 'reb'},
-      { label: 'AST' , field: 'ast'},
-      { label: 'STL' , field: 'stl'},
-      { label: 'BLK' , field: 'blk'},
-      { label: 'TO' , field: 'to'},
-      { label: 'TOTAL', field: 'total' }
+      { label: 'PR' , field: 'punt_rank', width: 50},
+      { label: 'R' , field: 'rank', width: 50},
+      { label: 'Name' , field: 'name', sort: 'disabled', width: 150},
+      { label: '', field: 'injury', sort: 'disabled', width: 25},
+      { label: 'POS', field: 'position', sort: 'disabled', width: 70},
+      { label: 'ADP', field: 'espn_adp', width: 70},
+      { label: 'Range', field: 'draft_range', sort: 'disabled', width: 70},
+      { label: 'SCHED', field: 'playoffs', width: 80},
+      { label: 'GP' , field: 'gp', width: 50},
+      { label: 'FG%' , field: 'fg', width: 60},
+      { label: 'FT%' , field: 'ft', width: 60},
+      { label: '3PM' , field: 'three', width: 60},
+      { label: 'PTS' , field: 'pts', width: 60},
+      { label: 'REB' , field: 'reb', width: 60},
+      { label: 'AST' , field: 'ast', width: 60},
+      { label: 'STL' , field: 'stl', width: 60},
+      { label: 'BLK' , field: 'blk', width: 60},
+      { label: 'TO' , field: 'to', width: 60},
+      { label: 'TOTAL', field: 'total', width: 80}
     ];
 
     const modalColumns = [
@@ -344,10 +375,12 @@ class App extends Component {
             <MDBBtn size="sm" color="dark" onClick={this.skipPlayer}>Skip</MDBBtn>
           </MDBRow>
           <MDBDataTable
+            className="datatable"
             autoWidth
-            hover
             striped
             bordered
+            fixed
+            scrollY
             hover
             small
             entries={50}
@@ -447,26 +480,27 @@ class App extends Component {
         <MDBModalHeader toggle={this.toggleModal("team_overview")}>Team Overview</MDBModalHeader>
         <MDBModalBody>
           <MDBDataTable
-            autoWidth
             hover
             striped
             bordered
+            noBottomColumns={true}
             hover
             small
             paging={false}
             searching={false}
             info={false}
+            order={['name', 'asc']}
             data={ {columns : modalColumns, rows : this.state.team_totals.map( team => ({
               name : team.name,
-              fg : team.totals.fg,
-              ft : team.totals.ft,
-              three : team.totals.three,
-              pts : team.totals.pts,
-              reb: team.totals.reb,
-              ast : team.totals.ast,
-              stl : team.totals.stl,
-              blk : team.totals.blk,
-              to : team.totals.to
+              fg : this.applyColorIndividualZscore(team.totals.fg),
+              ft : this.applyColorIndividualZscore(team.totals.ft),
+              three : this.applyColorIndividualZscore(team.totals.three),
+              pts : this.applyColorIndividualZscore(team.totals.pts),
+              reb: this.applyColorIndividualZscore(team.totals.reb),
+              ast : this.applyColorIndividualZscore(team.totals.ast),
+              stl : this.applyColorIndividualZscore(team.totals.stl),
+              blk : this.applyColorIndividualZscore(team.totals.blk),
+              to : this.applyColorIndividualZscore(team.totals.to)
             }) ) } }
             />
         </MDBModalBody>

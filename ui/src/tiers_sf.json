@@ -2,15 +2,15 @@
   "tiers" : [
     [ "Kevin Durant" ],
     [ "Jayson Tatum" ],
-    [ "Paul George", "Jimmy Butler" ],
-    [ "LeBron James", "Michael Porter Jr"],
-    [ "Khris Middleton", "OG Anunoby", "Brandon Ingram" ],
-    [ "Gordon Hayward" ],
-    [ "Mikal Bridges" ],
-    [ "TJ Warren" ],
-    [ "Robert Covington", "Kyle Anderson" ],
-    [ "Andrew Wiggins", "Miles Bridges"],
-    [ "De'Andre Hunter", "Joe Ingles" ],
-    [ "Keldon Johnson", "Otto Porter Jr", "Royce O'Neale", "Danilo Gallinari"]
+    [ "Paul George" ],
+    [ "Jimmy Butler" ],
+    [ "Khris Middleton", "DeMar DeRozan" ],
+    [ "Desmond Bane" ],
+    [ "Brandon Ingram", "Lauri Markkanen", "OG Anunoby"],
+    [ "Keldon Johnson", "Franz Wagner", "Buddy Hield", "Mikal Bridges", "Michael Porter Jr", "Gordon Hayward" ],
+    [ "Tobias Harris", "Herbert Jones" ],
+    [ "Bogdan Bogdanovic" ],
+    [ "Saddiq Bey", "Andrew Wiggins", "Josh Hart" ],
+    [ "Lu Dort", "Jaden McDaniels", "Caleb Martin" ]
   ]
 }

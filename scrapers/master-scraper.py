@@ -4,10 +4,12 @@ from bs4 import BeautifulSoup
 import requests
 import json
 import csv
+from schedule import get_schedule
 
 ESPN_API_URL = "https://fantasy.espn.com/apis/v3/games/fba/seasons/2023/segments/0/leaguedefaults/1?view=kona_player_info"
 HASHTAG_RANKINGS_URL = "https://hashtagbasketball.com/fantasy-basketball-projections"
 HASHTAG_DYNASTY_URL = "https://hashtagbasketball.com/fantasy-basketball-dynasty-rankings"
+HASHTAG_COMMUNITY_URL = "https://hashtagbasketball.com/fantasy-basketball-community-adp"
 CNN_INJURIES_URL = "https://www.cbssports.com/nba/injuries/"
 
 
@@ -46,6 +48,7 @@ def pull_data_espn():
 
 
 def pull_data_hashtag_zscores():
+    schedule = get_schedule()
     page = requests.get(HASHTAG_RANKINGS_URL)
 
     soup = BeautifulSoup(page.content, 'html.parser')
@@ -56,7 +59,8 @@ def pull_data_hashtag_zscores():
     dynasty_soup = BeautifulSoup(dynasty_page.content, 'html.parser')
     dynasty_table = dynasty_soup.find("table", {"class": "table--statistics"})
     dynasty_rows = dynasty_table.findAll("tr")
-    tooltip_map = map(lambda tr: (tr.contents[3].text.strip(), tr.findAll('td')[-1].contents[-1].strip()), dynasty_rows[1:])
+    tooltip_map = map(lambda tr: (tr.contents[3].text.strip(), tr.findAll('td')[-1].contents[-1].strip()),
+                      dynasty_rows[1:])
     tooltip_dict = dict((x, y) for x, y in tooltip_map)
 
     player_list = []
@@ -70,7 +74,7 @@ def pull_data_hashtag_zscores():
             rank = td[0].text.strip()
             if rank != "R#":
                 # unspan the tags that have it (not all of them do)
-                formatted_data = [""] * 15
+                formatted_data = [""] * 19
                 formatted_data[0] = re.search('[0-9]+', rank).group()
                 k = 1
                 for j in range(1, len(td)):
@@ -87,6 +91,8 @@ def pull_data_hashtag_zscores():
                             k += 1
 
                 formatted_data[14] = td[5].text.strip() # gp
+                team = td[4].text.strip()
+                formatted_data[16] = team  # team
                 player_name = formatted_data[1]
                 player_names.append(player_name)
                 if player_name in tooltip_dict.keys():
@@ -100,14 +106,15 @@ def pull_data_hashtag_zscores():
                     formatted_data[13] = progress_bar.text.strip()
 
                 print(formatted_data)
-                player_list.append(tuple(formatted_data))
+                player_list.append(formatted_data)
 
     rank = 201
     for i in range(1, len(dynasty_rows)):
         tr = dynasty_rows[i]
         player_name = tr.contents[3].text.strip()
+        team = tr.contents[9].text.strip()
         if player_name not in player_names:
-            formatted_data = [""] * 15
+            formatted_data = [""] * 19
             formatted_data[0] = rank
             rank += 1
             formatted_data[1] = player_name
@@ -136,9 +143,25 @@ def pull_data_hashtag_zscores():
             if player_name in tooltip_dict.keys():
                 formatted_data[12] = tooltip_dict[player_name]
 
-            print(formatted_data)
-            player_list.append(tuple(formatted_data))
+            formatted_data[16] = team
 
+            print(formatted_data)
+            player_list.append(formatted_data)
+
+    page = requests.get(HASHTAG_COMMUNITY_URL)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    tbody = soup.find('table', {"class": "table--statistics"})
+    for i in range(0, len(player_list)):
+        player = player_list[i]
+        if tbody.findAll("tr") is not None:
+            for tr in tbody.findAll("tr"):
+                if player[1] in tr.text:
+                    player_list[i][15] = tr.findAll('td')[1].text.strip()
+                    break
+        player_list[i][17] = schedule['games'][player_list[i][16]]  # 16 = team, get schedule from team
+        player_list[i][18] = schedule['quality_games'][player_list[i][16]]
+
+        print(player_list[i])
     return player_list
 
 
@@ -176,6 +199,10 @@ def combined_rankings(espn_rankings, hashtag_rankings_zscore, cnn_injuries):
         tip = player[12]
         consistency = player[13]
         gp = player[14]
+        draft_range = player[15]
+        team = player[16]
+        games = player[17]
+        quality_games = player[18]
 
         espn_player = next((x for x in espn_rankings if x[1] == player_name), [500, "", 150, []])
         espn_rank = espn_player[0]
@@ -203,7 +230,11 @@ def combined_rankings(espn_rankings, hashtag_rankings_zscore, cnn_injuries):
             'injury': injury,
             'positions': espn_positions,
             'consistency': consistency,
-            'gp': gp
+            'gp': gp,
+            'draft_range': draft_range,
+            'team': team,
+            'games': games,
+            'quality_games': quality_games
         })
 
     return player_list
